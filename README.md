@@ -49,25 +49,27 @@ The configuration details of each machine may be found below.
 | Web-1   | Web Server                            |                      | 10.0.0.8              | Linux               |
 | Web-2   | Web Server                            |                      | 10.0.0.6              | Linux               |
 | ELK     | Logging and Monitoring                | 20.112.97.100        | 10.1.0.4              | Linux               |
-| Red-Web Load Balancer     | Balance Web Traffic | 20.124.111.167     | 10.1.0.4    | Linux               |
+| Red-Web Load Balancer     | Distribute Web Traffic | 20.124.111.167     | 10.1.0.4    | none               |
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
 The Jumpbox machine can accept SSH connections from one specific IP Address on the Internet. That IP will not be released here.
 
-Similarly the :5601 Kibana port of ELK can be accessed from one specific IP Address on the Internet. This is TOP SECRET also.
+The Kibana port (:5601) on ELK can be accessed from one specific IP Address on the Internet. This is TOP SECRET also.
 
-Machines within the network can only be accessed by internal users and only from Jumpbos.
+The Red-Web Load Balancer HTTP port can be accessed from that secret IP Address.
+
+Machines within the network can only be accessed by internal users and only from Jumpbox.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
+| Name     | "Publicly" Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes, :22            |  NOT.FOR.REL.EASE    |
-| Web-1    | No                  |                      |
-| Web-2    | No                  |                      |
-| ELK      | Yes, :5601          |  NOT.FOR.REL.EASE    |
+| Jump Box | Yes, :22            |  ONE.SEC.RET.IP    |
+| Web-1    | Yes, via load balancer |  ONE.SEC.RET.IP    |
+| Web-2    | Yes, via load balancer |  ONE.SEC.RET.IP    |
+| ELK      | Yes, :5601          |  ONE.SEC.RET.IP    |
 
 ### Elk Configuration
 
