@@ -4,7 +4,9 @@ The files in this repository were used to configure the network depicted below.
 
 ![Red World SIEM Network Diagram](Diagrams/Red-World-Network-Map-Phase-2.png "Red World SIEM Network Diagram")
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the ELK-in-the-Cloud file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. 
+They can be used to either recreate the entire deployment pictured above. Alternatively, 
+select portions of the ELK-in-the-Cloud file may be used to install only certain pieces of it, such as Filebeat.
 
 [Filebeat Playbook](./Ansible/ansible.Backup.Before.Roles/filebeat-playbook.yml)
 
@@ -99,16 +101,10 @@ These Beats allow us to collect the following information from each machine:
 To use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
+- Copy the playbook file to /etc/ansible/roles.
 - Update the hosts file to include your web server VMs and the Elk server.
 - Run the playbook, and navigate to Kibana to check that the installation worked as expected.
-
-
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-
+- The /etc/ansible/hosts file defines machine types and groupings.
+- So, to run the playbook on a specific machine, /etc/ansible/hosts is the file to tweak.
+- Or to specify where to install the ELK server, create a new group in that file and add the new server's IP address. 
+- Then to check it's working, use a browser to access it. For us that is http://20.112.97.100:5601
