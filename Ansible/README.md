@@ -1,6 +1,5 @@
 ## Ansible Notes 
 Hope you find this helpful.  
-Tar balls are provided for your convenience.
 
 **ansible.Backup.Before.roles** -These are fully tested.
 
