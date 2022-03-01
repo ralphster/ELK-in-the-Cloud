@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Red World SIEM Network Diagram](Diagrams/Red-World-Network-Map-Phase-1.png "Red World SIEM Network Diagram")
+![Red World SIEM Network Diagram](Diagrams/Red-World-Network-Map-Phase-2.png "Red World SIEM Network Diagram")
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _______ file may be used to install only certain pieces of it, such as Filebeat.
 
