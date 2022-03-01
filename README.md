@@ -9,7 +9,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 [Filebeat Playbook](./Ansible/ansible.Backup.Before.Roles/filebeat-playbook.yml)
 
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -78,7 +78,7 @@ The playbook implements the following tasks:
 - Use apt to install docker.io and python3-pip
 - Use pip to install docker module
 - Increase virtual memory
-- Download and launch ELK container with a properly configured firewall
+- Download and launch the ELK container with a properly configured firewall
 - Enable docker on boot
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
