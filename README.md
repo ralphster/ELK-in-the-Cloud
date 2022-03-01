@@ -45,10 +45,11 @@ The configuration details of each machine may be found below.
  -->
 | Name    | Function                              | Public<br>IP Address | Private<br>IP Address | Operating<br>System |
 |---------|---------------------------------------|----------------------|-----------------------|---------------------|
-| Jumpbox | Gateway,<br>Ansible Control           | NOT.FOR.REL.EASE     | 10.0.0.4              | Linux               |
+| Jumpbox | Gateway,<br>Ansible Control           | 20.124.33.137        | 10.0.0.4              | Linux               |
 | Web-1   | Web Server                            |                      | 10.0.0.8              | Linux               |
 | Web-2   | Web Server                            |                      | 10.0.0.6              | Linux               |
-| ELK     | Logging and Monitoring                | NOT.FOR.REL.EASE     | 10.1.0.4              | Linux               |
+| ELK     | Logging and Monitoring                | 20.112.97.100        | 10.1.0.4              | Linux               |
+| Red-Web Load Balancer     | Balance Web Traffic | 20.124.111.167     | 10.1.0.4    | Linux               |
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
