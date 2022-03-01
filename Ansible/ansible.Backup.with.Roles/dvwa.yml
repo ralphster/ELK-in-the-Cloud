@@ -1,0 +1,6 @@
+---
+  - name: configure DVWA webserver VM with docker
+    hosts: webservers
+    become: true
+    roles:
+    - install-dvwa

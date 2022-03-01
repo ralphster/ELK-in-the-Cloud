@@ -1,0 +1,40 @@
+---
+- name: install metricbeat apt repo signing keys
+  shell: curl -fs https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+- name: install potentially necessary transport method via apt
+  apt:
+    name: apt-transport-https
+    update_cache: yes
+    state: latest
+
+- name: configure elastic repository
+  shell: echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+- name: install metricbeat with apt
+  apt:
+    name: metricbeat
+    update_cache: yes
+    state: latest
+
+- name: drop in metricbeat.yml config
+  copy:
+    src: metricbeat-config.yml
+    dest: /etc/metricbeat/metricbeat.yml.CLASS
+
+- name: enable elasticsearch
+  command: sudo metricbeat modules enable elasticsearch
+
+- name: enable docker
+  command: sudo metricbeat modules enable docker
+
+- name: enable kibana dashboards
+  command: sudo metricbeat setup
+
+- name: enable service metricbeat on boot
+  systemd:
+    name: metricbeat
+    enabled: yes
+    masked: no
+    state: started
+

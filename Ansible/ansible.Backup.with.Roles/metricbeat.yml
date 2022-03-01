@@ -1,0 +1,6 @@
+---
+  - name: installing and launching metricbeat
+    hosts: webservers
+    become: true
+    roles:
+    - install-metricbeat

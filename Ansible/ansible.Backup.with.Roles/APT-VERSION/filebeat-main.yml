@@ -1,0 +1,38 @@
+---
+- name: install filebeat apt repo signing keys
+  shell: curl -fs https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+- name: install potentially necessary transport method via apt
+  apt:
+    name: apt-transport-https
+    update_cache: yes
+    state: latest
+
+- name: configure elastic repository
+  shell: echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+- name: install filebeat with apt
+  apt:
+    name: filebeat
+    update_cache: yes
+    state: latest
+
+- name: drop in filebeat.yml config
+  copy:
+    src: filebeat-config.yml
+    dest: /etc/filebeat/filebeat.yml.CLASS
+
+- name: enable elasticsearch
+  command: sudo filebeat modules enable elasticsearch
+
+  #- name: enable kibana dashboards
+  #command: sudo filebeat setup
+
+- name: enable service filebeat on boot
+  systemd:
+    name: filebeat
+    enabled: yes
+    masked: no
+    state: started
+
+

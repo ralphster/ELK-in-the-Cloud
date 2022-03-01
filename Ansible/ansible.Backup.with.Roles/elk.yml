@@ -1,0 +1,7 @@
+---
+- name: Configure ELK VM with Docker
+  hosts: elkservers
+  remote_user: ralph
+  become: true
+  roles:
+    - install-elk

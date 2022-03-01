@@ -1,0 +1,6 @@
+---
+  - name: installing and launching filebeat
+    hosts: webservers
+    become: true
+    roles:
+    - install-filebeat
