@@ -49,7 +49,7 @@ The configuration details of each machine may be found below.
 | Web-1   | Web Server                            |                      | 10.0.0.8              | Linux               |
 | Web-2   | Web Server                            |                      | 10.0.0.6              | Linux               |
 | ELK     | Logging and Monitoring                | 20.112.97.100        | 10.1.0.4              | Linux               |
-| Red-Web Load Balancer     | Distribute Web Traffic | 20.124.111.167     | 10.1.0.4    | none               |
+| Red-Web Load Balancer     | Distribute Web Traffic | 20.124.111.167     | none    | none               |
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -58,7 +58,7 @@ The Jumpbox machine can accept SSH connections from one specific IP Address on t
 
 The Kibana port (:5601) on ELK can be accessed from one specific IP Address on the Internet. This is TOP SECRET also.
 
-The Red-Web Load Balancer HTTP port can be accessed from that secret IP Address.
+The Red-Web Load Balancer HTTP port can be accessed from that one secret IP Address.
 
 Machines within the network can only be accessed by internal users and only from Jumpbox.
 
@@ -67,8 +67,8 @@ A summary of the access policies in place can be found in the table below.
 | Name     | "Publicly" Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | Yes, :22            |  ONE.SEC.RET.IP    |
-| Web-1    | Yes, via load balancer |  ONE.SEC.RET.IP    |
-| Web-2    | Yes, via load balancer |  ONE.SEC.RET.IP    |
+| Web-1    | Only via load balancer |  ONE.SEC.RET.IP    |
+| Web-2    | Only via load balancer |  ONE.SEC.RET.IP    |
 | ELK      | Yes, :5601          |  ONE.SEC.RET.IP    |
 
 ### Elk Configuration
@@ -92,15 +92,18 @@ The following screenshot displays the result of running `docker ps` after succes
 This ELK server is configured to monitor Web-1 and Web-2, using Filebeat and Metricbeat.
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- **Filebeat** monitors logfiles, such as those stored in /var/log/ and /var/log/apache2/. So it would include web logs.
+- **Metricbeat** monitors metrics from the system and services. This includes both operating system and application resources and performance. So it would include cpu load and filesystem free space.
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+To use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
 - Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Update the hosts file to include your web server VMs and the Elk server.
+- Run the playbook, and navigate to Kibana to check that the installation worked as expected.
+
+
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
