@@ -69,9 +69,9 @@ A summary of the access policies in place can be found in the table below.
 | Name     | "Publicly" Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | Yes, :22            |  ONE.SEC.RET.IP    |
-| Web-1    | Only via load balancer |  ONE.SEC.RET.IP    |
-| Web-2    | Only via load balancer |  ONE.SEC.RET.IP    |
-| ELK      | Yes, :5601          |  ONE.SEC.RET.IP    |
+| Web-1    | Only via load balancer |  10.0.0.4    |
+| Web-2    | Only via load balancer |  10.0.0.4    |
+| ELK      | Yes, :5601          |  10.0.0.4    |
 
 ### Elk Configuration
 
