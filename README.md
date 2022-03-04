@@ -68,10 +68,9 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | "Publicly" Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| JumpBox | SSH             |  ONE.SEC.RET.IP    |
-| Web-1    | HTTP via load balancer <br>SSH | ONE.SEC.RET.IP <br> via JumpBox   |
-| Web-2    | HTTP via load balancer <br>SSH|  ONE.SEC.RET.IP <br> via JumpBox  |
-| ELK      | Kibana 5601/tcp <br>SSH         |  ONE.SEC.RET.IP <br> via JumpBox  |
+| JumpBox | (rule 110) SSH             |  ONE.SEC.RET.IP    |
+| Web-1 and Web-2   | (rule 100) HTTP via load balancer <br>(rule 120) SSH | ONE.SEC.RET.IP <br> JumpBox  |
+| ELK      | (rule 200) SSH <br> (rule 210) Kibana port:5601/tcp <br> (rule 220) Elk ports:5044,5601,9200/tcp | JumpBox <br>ONE.SEC.RET.IP <br> Web-1, Web-2 |
 
 ### Elk Configuration
 
