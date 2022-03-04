@@ -66,7 +66,7 @@ Machines within the network can only be accessed by internal users and only from
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | "Publicly" Accessible | Allowed IP Addresses |
+| Name     | Accessibility | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | JumpBox | (Rule 110) SSH             |  ONE.SEC.RET.IP    |
 | Web-1 and Web-2   | (Rule 100) HTTP via load balancer <br>(Rule 120) SSH | ONE.SEC.RET.IP <br> JumpBox 10.0.0.4  |
