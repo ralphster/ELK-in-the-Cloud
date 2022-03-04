@@ -47,20 +47,20 @@ The configuration details of each machine may be found below.
  -->
 | Name    | Function                              | Public<br>IP Address | Private<br>IP Address | Operating<br>System |
 |---------|---------------------------------------|----------------------|-----------------------|---------------------|
-| Jumpbox | Gateway,<br>Ansible Control           | 20.124.33.137        | 10.0.0.4              | Linux               |
+| Jumpbox | Gateway for SSH,<br>Ansible Control   | 20.124.33.137        | 10.0.0.4              | Linux               |
 | Web-1   | Web Server                            |                      | 10.0.0.8              | Linux               |
 | Web-2   | Web Server                            |                      | 10.0.0.6              | Linux               |
 | ELK     | Logging and Monitoring                | 20.112.97.100        | 10.1.0.4              | Linux               |
-| Red-Web Load Balancer     | Distribute Web Traffic | 20.124.111.167     | none    | none               |
+| Red-Web Load Balancer     | Distribute Web Traffic | 20.124.111.167    | none                  | none                |
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-The Jumpbox machine can accept SSH connections from one specific IP Address on the Internet. That IP will not be released here.
+The Jumpbox machine can accept SSH connections from one specific IP Address on the Internet. It is ONE.SEC.RET.IP.
 
-The Kibana port (:5601) on ELK can be accessed from one specific IP Address on the Internet. This is TOP SECRET also.
+The Kibana port (:5601) on ELK can be accessed from one specific IP Address on the Internet. This is also ONE.SEC.RET.IP.
 
-The Red-Web Load Balancer HTTP port can be accessed from that one secret IP Address.
+The Red-Web Load Balancer HTTP port can be accessed from that same secret IP Address.
 
 Machines within the network can only be accessed by internal users and only from Jumpbox.
 
@@ -68,10 +68,10 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | "Publicly" Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes, :22            |  ONE.SEC.RET.IP    |
-| Web-1    | Only via load balancer |  10.0.0.4    |
-| Web-2    | Only via load balancer |  10.0.0.4    |
-| ELK      | Yes, :5601          |  10.0.0.4    |
+| JumpBox | SSH             |  ONE.SEC.RET.IP    |
+| Web-1    | HTTP via load balancer <br>SSH | ONE.SEC.RET.IP <br> via JumpBox   |
+| Web-2    | HTTP via load balancer <br>SSH|  ONE.SEC.RET.IP <br> via JumpBox  |
+| ELK      | Kibana 5601/tcp <br>SSH         |  ONE.SEC.RET.IP <br> via JumpBox  |
 
 ### Elk Configuration
 
